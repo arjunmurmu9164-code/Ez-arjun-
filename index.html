@@ -1,1 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arjun | Connect</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #8b0000, #1a1a1a, #000000, #ff1a1a);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            color: white;
+        }
+
+        /* 🔥 Gradient Animation */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ✨ Particles Canvas */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* 💎 Glass Card */
+        .container {
+            width: 360px;
+            padding: 40px 30px;
+            border-radius: 24px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            animation: fadeUp 1s ease-out;
+        }
+
+        /* 👤 Profile Image */
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid transparent;
+            background-image: linear-gradient(#1a1a1a, #1a1a1a), linear-gradient(135deg, #ff4d4d, #ff9999);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.4);
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 14px;
+            color: #d1d1d1;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        /* 🔘 Buttons */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .links a {
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.06);
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            /* Entrance animation for links */
+            opacity: 0;
+            animation: fadeUpLinks 0.6s ease forwards;
+        }
+
+        /* Staggered animation delays for buttons */
+        .links a:nth-child(1) { animation-delay: 0.2s; }
+        .links a:nth-child(2) { animation-delay: 0.3s; }
+        .links a:nth-child(3) { animation-delay: 0.4s; }
+        .links a:nth-child(4) { animation-delay: 0.5s; }
+        .links a:nth-child(5) { animation-delay: 0.6s; }
+
+        .links a i {
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+            color: #ff4d4d;
+            transition: 0.3s;
+        }
+
+        .links a:hover {
+            background: rgba(255, 77, 77, 0.8);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 77, 77, 0.3);
+        }
+
+        .links a:hover i {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #777;
+            letter-spacing: 0.5px;
+        }
+
+        /* 🎬 Keyframe Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUpLinks {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 10px rgba(255, 77, 77, 0.2); }
+            to { box-shadow: 0 0 25px rgba(255, 77, 77, 0.6); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <div class="container">
+        <img src="https://i.ibb.co/Xxzbn66Z/file-00000000835c722faef5d3bf454aa4d4.png" class="profile-img" alt="Arjun's Profile">
+        
+        <h1>ARJUN</h1>
+        <p>Frontend Dev | Designer | Creator 🚀</p>
+
+        <div class="links">
+            <a href="https://insta.openinapp.co/ekyae" target="_blank">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.facebook.com/share/1CSZzfACRw/" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.threads.com/@im_arjun_o3" target="_blank">
+                <i class="fa-brands fa-threads"></i> Threads
+            </a>
+            <a href="https://t.me/Ez_arjun" target="_blank">
+                <i class="fa-brands fa-telegram"></i> Telegram
+            </a>
+            <a href="https://yt.openinapp.co/r6gpk" target="_blank">
+                <i class="fa-brands fa-youtube"></i> YouTube
+            </a>
+        </div>
+
+        <div class="footer">© 2026 Arjun. All rights reserved.</div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
+
+        // Resize canvas correctly
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+
+        let particlesArray = [];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5; // Slightly varied sizes
+                this.speedX = (Math.random() * 1 - 0.5) * 0.8;
+                this.speedY = (Math.random() * 1 - 0.5) * 0.8;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Bounce off edges smoothly
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            
+            draw() {
+                ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            // Amount of particles based on screen size
+            let numberOfParticles = (canvas.width * canvas.height) / 12000;
+            if (numberOfParticles > 100) numberOfParticles = 100; // Cap max particles
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+
+                // ✨ Network / Constellation Effect (Draw lines between close particles)
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        // Opacity based on distance
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance/120})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
+</body>
+  </html>
